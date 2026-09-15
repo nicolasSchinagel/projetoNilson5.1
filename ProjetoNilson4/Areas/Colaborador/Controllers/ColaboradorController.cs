@@ -1,10 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ColaboradorClass = ProjetoNilson4.Models.Colaborador;
 using ProjetoNilson4.Repository.Contract;
+using ProjetoNilson4.Libraries.Filtro;
+using ProjetoNilson4.Models.Constant;
 
 namespace ProjetoNilson4.Areas.Colaborador.Controllers
 {
     [Area("Colaborador")]
+    [ColaboradorAutorizacao(ColaboradorTipoConstant.Gerente)]
     public class ColaboradorController : Controller
     {
         private IColaboradorRepository _colaboradorRepository;
@@ -14,7 +17,7 @@ namespace ProjetoNilson4.Areas.Colaborador.Controllers
         }
         public IActionResult Index()
         {
-            return View();
+            return View(_colaboradorRepository.ObterTodosColaboradores());
         }
         [HttpGet]
         public IActionResult Cadastro()

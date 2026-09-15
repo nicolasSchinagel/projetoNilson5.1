@@ -19,5 +19,7 @@ namespace ProjetoNilson4.Repository.Contract
         Cliente ObterCliente(int Id);
         IEnumerable<Cliente> ObterTodosClientes();
         IPagedList<Cliente> ObterTodosClientes(int? pagina, string pesquisa);
+        void Ativar(int id);
+        void Desativar(int id);
     }
 }

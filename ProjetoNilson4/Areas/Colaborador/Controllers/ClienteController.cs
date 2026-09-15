@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ProjetoNilson4.Libraries.Filtro;
 using ProjetoNilson4.Repository.Contract;
 
 namespace ProjetoNilson4.Areas.Colaborador.Controllers
@@ -16,6 +17,19 @@ namespace ProjetoNilson4.Areas.Colaborador.Controllers
         public IActionResult Index()
         {
             return View(_clienteRepository.ObterTodosClientes());
+        }
+
+        [ValidateHttpReferer]
+        public IActionResult Ativar(int id)
+        {
+            _clienteRepository.Ativar(id);
+            return RedirectToAction(nameof(Index));
+        }
+        [ValidateHttpReferer]
+        public IActionResult Desativar(int id)
+        {
+            _clienteRepository.Desativar(id);
+            return RedirectToAction(nameof(Index));
         }
     }
 }
