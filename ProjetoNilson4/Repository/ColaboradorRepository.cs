@@ -117,6 +117,7 @@ namespace ProjetoNilson4.Repository
                     colaborador.Id = (Int32)(dr["Id"]);
                     colaborador.Nome = (string)(dr["Nome"]);
                     colaborador.Email = (string)(dr["Email"]);
+                    colaborador.Telefone = (string)(dr["Telefone"]);
                     colaborador.Senha = (string)(dr["Senha"]);
                     colaborador.Tipo = (string)(dr["Tipo"]);
                 }
@@ -165,8 +166,10 @@ namespace ProjetoNilson4.Repository
                         {
                             Id = Convert.ToInt32(dr["Id"]),
                             Nome = (string)(dr["Nome"]),
+                            CPF = (string)(dr["CPF"]),
                             Email = (string)(dr["Email"]),
                             Senha = (string)(dr["Senha"]),
+                            Telefone = (string)(dr["Telefone"]),
                             Tipo = (string)(dr["Tipo"]),
                         });
                 }

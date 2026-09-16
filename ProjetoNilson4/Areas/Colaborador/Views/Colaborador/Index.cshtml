@@ -7,11 +7,14 @@
 <h1>Colaboradores</h1>
 
 <p>
-    <a class="btn btn-primary" asp-action="Cadastrar" asp-controller="Colaborador" asp-area="Colaborador">Cadastrar</a>
+    <a class="btn btn-primary" asp-action="Cadastro" asp-controller="Colaborador" asp-area="Colaborador">Cadastrar</a>
 </p>
 <div class="table-responsive">
     <table class="table table-bordered">
         <thead>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
             <th scope="col">
                 @Html.DisplayNameFor(model => model.Nome)
             </th>
@@ -19,9 +22,6 @@
                 @Html.DisplayNameFor(model => model.CPF)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Telefone)
-            </th>
-            <th scope="col">
                 @Html.DisplayNameFor(model => model.Email)
             </th>
             <th scope="col">
@@ -30,7 +30,12 @@
             <th scope="col">
                 @Html.DisplayNameFor(model => model.Tipo)
             </th>
-            <th scope="col">Ações</th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.Telefone)
+            </th>
+            <th scope="col">
+                <h3>Ações</h3>
+            </th>
         </thead>
         <tbody>
             @foreach(Colaborador colaborador in Model)
@@ -38,69 +43,18 @@
                 <tr>
                     <th scope="row">@colaborador.Id</th>
                     <td>@colaborador.Nome</td>
+                    <td>@colaborador.CPF</td>
                     <td>@colaborador.Email</td>
                     <td>@colaborador.Senha</td>
+                    <td>@colaborador.Tipo</td>
+                    <td>@colaborador.Telefone</td>
 
                     <td>
                         <a asp-action="Atualizar" asp-route-id="@colaborador.Id" class="btn btn-secondary">Atualizar</a>
-                        <a asp-action="Desativar" asp-route-id="@colaborador.Id" class="btn btn-secondary">Desativar</a>
+                        <a asp-action="Excluir" asp-route-id="@colaborador.Id" class="btn btn-danger" onclick="return confirm('Deseja realmente excluir?')">Excluir</a>
                     </td>
                 </tr>
             }
         </tbody>
     </table>
 </div>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Nome)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CPF)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Telefone)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Senha)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Tipo)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(model => item.Nome)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.CPF)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.Telefone)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.Senha)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.Tipo)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>

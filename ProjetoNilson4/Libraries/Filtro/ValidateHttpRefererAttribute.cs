@@ -25,12 +25,13 @@ namespace ProjetoNilson4.Libraries.Filtro
                     context.Result = new ContentResult() { Content = "Acesso negado!" };
                 }
             }
-        }
+        }    
 
+        
         public void OnActionExecuting(ActionExecutingContext context)
         {
             // executado após passar pelo controlador
-            throw new NotImplementedException();
         }
+        
     }
 }
