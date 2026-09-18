@@ -118,7 +118,6 @@ namespace ProjetoNilson4.Repository
                     colaborador.Nome = (string)(dr["Nome"]);
                     colaborador.Email = (string)(dr["Email"]);
                     colaborador.Telefone = (string)(dr["Telefone"]);
-                    colaborador.Senha = (string)(dr["Senha"]);
                     colaborador.Tipo = (string)(dr["Tipo"]);
                 }
                 return colaborador;
