@@ -12,7 +12,7 @@ namespace ProjetoNilson4.Libraries.Filtro
         {
             _loginCliente = (LoginCliente)context.HttpContext.RequestServices.GetService(typeof(LoginCliente));
             Cliente cliente = _loginCliente.GetCliente();
-            if(cliente == null)
+            if(cliente == null || cliente.Situacao == "D")
             {
                 context.Result = new RedirectToActionResult("LoginCliente", "Home", null);
             }

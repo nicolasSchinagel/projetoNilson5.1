@@ -20,18 +20,18 @@ namespace ProjetoNilson4.Repository
         }
         public void Atualizar(Colaborador colaborador)
         {
-            string Tipo = ColaboradorTipoConstant.Comum;
+            // string Tipo = ColaboradorTipoConstant.Comum;
             using (var conexao = new MySqlConnection(_conexaoMySQL))
             {
                 conexao.Open();
-                MySqlCommand cmd = new MySqlCommand("update Colaborador set Nome=@Nome, Email=@Email, Senha=@Senha, Tipo=@Tipo where Id=@Id", conexao);
+                MySqlCommand cmd = new MySqlCommand("update Colaborador set Nome=@Nome, Telefone=@Telefone, Email=@Email, Senha=@Senha, CPF=@CPF, Tipo=@Tipo where CPF=@CPF", conexao);
 
                 cmd.Parameters.Add("@Nome", MySqlDbType.VarChar).Value = colaborador.Nome;
-                cmd.Parameters.Add("@CPF", MySqlDbType.VarChar).Value = colaborador.CPF;
                 cmd.Parameters.Add("@Telefone", MySqlDbType.VarChar).Value = colaborador.Telefone;
                 cmd.Parameters.Add("@Email", MySqlDbType.VarChar).Value = colaborador.Email;
+                cmd.Parameters.Add("@Tipo", MySqlDbType.VarChar).Value = colaborador.Tipo;
                 cmd.Parameters.Add("@Senha", MySqlDbType.VarChar).Value = colaborador.Senha;
-                cmd.Parameters.Add("@Tipo", MySqlDbType.VarChar).Value = Tipo;
+                cmd.Parameters.Add("@CPF", MySqlDbType.VarChar).Value = colaborador.CPF;
 
                 cmd.ExecuteNonQuery();
                 conexao.Close();
@@ -119,6 +119,8 @@ namespace ProjetoNilson4.Repository
                     colaborador.Email = (string)(dr["Email"]);
                     colaborador.Telefone = (string)(dr["Telefone"]);
                     colaborador.Tipo = (string)(dr["Tipo"]);
+                    colaborador.Senha = (string)(dr["Senha"]);
+                    colaborador.CPF = (string)(dr["CPF"]);
                 }
                 return colaborador;
             }
